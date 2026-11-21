@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Don Godoy — Morfate una BURGER | Pedidos Online</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Tipografías retro expresivas -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka:wght@500;600;700&family=Lobster&family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #0B192C;
@@ -19,1081 +17,293 @@
       --cheddar-dark: #E09400;
       --bun: #F3A338;
       --patty: #4A2511;
-      --lettuce: #4CB944;
-      --tomato: #E63946;
-      --bacon: #C1442E;
-      --wa-green: #25D366;
     }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
     body {
       background-color: var(--cream);
       color: var(--ink);
-      font-family: 'Montserrat', sans-serif;
-      background-image:
-        radial-gradient(rgba(11, 25, 44, 0.045) 1px, transparent 0),
-        radial-gradient(rgba(11, 25, 44, 0.03) 1px, transparent 0);
-      background-size: 24px 24px;
-      background-position: 0 0, 12px 12px;
-      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
-
-    .font-script {
-      font-family: 'Lobster', cursive;
-    }
-
     .font-display {
-      font-family: 'Archivo Black', sans-serif;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.04em;
     }
-
-    .font-cartoon {
-      font-family: 'Fredoka', sans-serif;
+    .font-script {
+      font-family: 'Pacifico', cursive;
     }
-
-    /* Bordes dibujados a mano / retro ink */
-    .ink-border {
-      border: 3.5px solid var(--ink);
-      box-shadow: 4px 4px 0px var(--ink);
-    }
-
-    .ink-border-sm {
-      border: 2.5px solid var(--ink);
-      box-shadow: 2.5px 2.5px 0px var(--ink);
-    }
-
-    .ink-card {
-      background-color: #FFFFFF;
-      border: 3.5px solid var(--ink);
-      border-radius: 26px;
+    .retro-card {
+      background: #FFFDF9;
+      border: 3px solid var(--ink);
       box-shadow: 5px 5px 0px var(--ink);
-      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      border-radius: 18px;
     }
-
-    .ink-card:hover {
-      transform: translate(-1px, -1px);
-      box-shadow: 6px 6px 0px var(--ink);
-    }
-
-    /* Botones de tamaño estilo píldora del flyer */
-    .size-pill-btn {
-      transition: all 0.14s cubic-bezier(0.22, 1, 0.36, 1);
+    .retro-btn {
       border: 2.5px solid var(--ink);
+      box-shadow: 3px 3px 0px var(--ink);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
-
-    .size-pill-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 0 var(--ink);
-    }
-
-    .size-pill-btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 1px 0 var(--ink);
-    }
-
-    /* Patrón de bandera a cuadros en las esquinas */
-    .checker-corner {
-      width: 96px;
-      height: 54px;
-      background-image:
-        linear-gradient(45deg, var(--ink) 25%, transparent 25%),
-        linear-gradient(-45deg, var(--ink) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, var(--ink) 75%),
-        linear-gradient(-45deg, transparent 75%, var(--ink) 75%);
-      background-size: 36px 36px;
-      background-position: 0 0, 0 18px, 18px -18px, -18px 0px;
-    }
-
-    @media (max-width: 480px) {
-      .checker-corner {
-        width: 68px;
-        height: 44px;
-        background-size: 28px 28px;
-        background-position: 0 0, 0 14px, 14px -14px, -14px 0px;
-      }
-    }
-
-    /* Checkbox retro custom */
-    .retro-checkbox {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 22px;
-      height: 22px;
-      min-width: 22px;
-      border: 2.8px solid var(--ink);
-      border-radius: 6px;
-      background-color: #FFF;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.15s ease, transform 0.1s ease;
-    }
-
-    .retro-checkbox:checked {
-      background-color: var(--ink);
-    }
-
-    .retro-checkbox:checked::after {
-      content: '';
-      width: 6px;
-      height: 11px;
-      border: solid #FFF;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg) translate(-1px, -1px);
-    }
-
-    /* Ribbon banner */
-    .ribbon-banner {
-      position: relative;
-      background: var(--ink);
-      color: var(--cream);
-      clip-path: polygon(2% 0%, 98% 0%, 100% 50%, 98% 100%, 2% 100%, 0% 50%);
-    }
-
-    /* Animación flotante sutil para la mascota */
-    @keyframes mascotWobble {
-      0%, 100% { transform: rotate(-2deg) translateY(0px); }
-      50% { transform: rotate(2deg) translateY(-3px); }
-    }
-
-    .mascot-float {
-      animation: mascotWobble 3.4s ease-in-out infinite;
-      transform-origin: bottom center;
-    }
-
-    /* Scrollbar limpio */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--cream);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--ink);
-      border-radius: 99px;
+    .retro-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--ink);
     }
   </style>
 </head>
-<body class="min-h-screen pb-28 sm:pb-16 selection:bg-[#FFB800] selection:text-[#0B192C]">
-
-  <!-- Barra discreta superior para configurar WhatsApp del local (Santiago) -->
-  <div class="w-full max-w-2xl mx-auto px-3 pt-2 flex items-center justify-between text-xs font-bold text-[#0B192C]/80">
-    <div class="flex items-center gap-1.5 bg-white/80 px-2.5 py-1 rounded-full border-2 border-[#0B192C]">
-      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-      <span>Berazategui • Pedidos Online</span>
+<body class="min-h-screen pb-28">
+  <header class="max-w-3xl mx-auto px-4 pt-5 pb-3">
+    <div class="flex items-center justify-between gap-2 text-xs font-bold">
+      <span class="px-3 py-1 rounded-full bg-[#FFFDF9] border-2 border-[#0B192C]">● Berazategui / Hudson · Pedidos Online</span>
+      <button id="openSettingsBtn" type="button" style="display:none" class="px-3 py-1 rounded-full bg-[#FFB800] border-2 border-[#0B192C]">Config. WSP</button>
     </div>
-    <button
-      id="openSettingsBtn"
-      type="button"
-      class="flex items-center gap-1.5 bg-white hover:bg-[#FFB800] px-3 py-1 rounded-full border-2 border-[#0B192C] transition-colors shadow-[2px_2px_0px_#0B192C]"
-      title="Configurar número de WhatsApp de Don Godoy"
-    >
-      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <circle cx="12" cy="12" r="3"></circle>
-        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-      </svg>
-      <span>Config. WSP</span>
-    </button>
-  </div>
 
-  <!-- CONTENEDOR PRINCIPAL ESTILO FLYER -->
-  <main class="relative w-full max-w-2xl mx-auto px-3 sm:px-5 pt-2 pb-10">
-
-    <!-- Esquinas superiores con bandera a cuadros -->
-    <div class="checker-corner absolute top-1 left-2 pointer-events-none opacity-95" aria-hidden="true"></div>
-    <div class="checker-corner absolute top-1 right-2 pointer-events-none opacity-95" aria-hidden="true"></div>
-
-    <!-- ==================== 1. HEADER RETRO ==================== -->
-    <header class="relative pt-4 sm:pt-6 flex flex-col items-center text-center">
-
-      <!-- Fila superior: Mascota Chef + Logo Don Godoy -->
-      <div class="w-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4 z-10">
-        <!-- Mascota Burger Chef SVG estilo Rubber Hose / Retro Cartoon -->
-        <div class="mascot-float relative w-36 h-32 sm:w-44 sm:h-36 flex-shrink-0 -mb-4 sm:-mb-5 z-20">
-          <svg viewBox="0 0 220 190" class="w-full h-full overflow-visible" aria-label="Mascota Don Godoy">
-            <!-- Rayos de acción -->
-            <g stroke="#0B192C" stroke-width="4.5" stroke-linecap="round">
-              <line x1="158" y1="30" x2="176" y2="16" />
-              <line x1="168" y1="45" x2="192" y2="38" />
-              <line x1="168" y1="62" x2="188" y2="64" />
-              <line x1="42" y1="78" x2="20" y2="70" />
-              <line x1="38" y1="95" x2="14" y2="95" />
-              <line x1="44" y1="112" x2="24" y2="120" />
-            </g>
-
-            <!-- Gorro de Chef -->
-            <g transform="rotate(-18 85 52)">
-              <path d="M55,66 C34,62 28,36 48,26 C55,10 86,8 96,24 C116,22 124,48 105,62 L102,82 L56,82 Z"
-                    fill="#FFFFFF" stroke="#0B192C" stroke-width="5" stroke-linejoin="round"/>
-              <path d="M57,72 Q79,67 101,72" fill="none" stroke="#0B192C" stroke-width="4" stroke-linecap="round"/>
-            </g>
-
-            <!-- Pan superior (cabeza de la mascota) -->
-            <path d="M46,120 C46,72 166,72 166,120 C166,132 152,138 106,138 C60,138 46,132 46,120 Z"
-                  fill="#FFFDF8" stroke="#0B192C" stroke-width="5" stroke-linejoin="round"/>
-
-            <!-- Cejas expresivas -->
-            <path d="M78,86 Q88,79 97,85" fill="none" stroke="#0B192C" stroke-width="4" stroke-linecap="round"/>
-            <path d="M115,84 Q125,77 134,85" fill="none" stroke="#0B192C" stroke-width="4" stroke-linecap="round"/>
-
-            <!-- Ojo izquierdo abierto estilo pie-eye retro -->
-            <ellipse cx="90" cy="99" rx="8" ry="11" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
-            <path d="M90,92 A6,8 0 1,1 87,104 L91,99 Z" fill="#0B192C"/>
-
-            <!-- Ojo derecho guiñando -->
-            <path d="M115,99 Q124,90 133,99" fill="none" stroke="#0B192C" stroke-width="4.2" stroke-linecap="round"/>
-            <line x1="131" y1="97" x2="137" y2="93" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
-
-            <!-- Nariz cartoon -->
-            <ellipse cx="107" cy="107" rx="7" ry="5" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
-
-            <!-- Sonrisa pícara y lengua afuera -->
-            <path d="M75,112 Q107,134 139,110" fill="none" stroke="#0B192C" stroke-width="4.2" stroke-linecap="round"/>
-            <path d="M72,110 Q76,115 73,119" fill="none" stroke="#0B192C" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M137,107 Q141,111 139,116" fill="none" stroke="#0B192C" stroke-width="3.5" stroke-linecap="round"/>
-            <!-- Lengua -->
-            <path d="M112,121 C116,135 132,133 130,117" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.8" stroke-linecap="round"/>
-            <path d="M121,120 L122,127" stroke="#0B192C" stroke-width="2.5" stroke-linecap="round"/>
-
-            <!-- Lechuga y queso ondulado (cuello) -->
-            <path d="M36,136 C48,128 60,144 74,135 C88,127 98,146 112,136 C126,127 138,144 152,135 C164,128 174,136 176,144 C166,154 148,148 134,155 C118,162 104,148 88,155 C72,161 52,150 36,144 Z"
-                  fill="#FFFFFF" stroke="#0B192C" stroke-width="4.8" stroke-linejoin="round"/>
-
-            <!-- Manitos cartoon apoyadas sobre el banner -->
-            <!-- Mano izquierda -->
-            <g transform="translate(26, 134)">
-              <path d="M8,28 C2,22 4,10 13,11 C15,4 25,4 27,11 C34,7 42,13 38,21 C43,25 39,34 31,34 L14,34 C9,34 6,31 8,28 Z"
-                    fill="#FFFFFF" stroke="#0B192C" stroke-width="4.5" stroke-linejoin="round"/>
-              <line x1="15" y1="13" x2="16" y2="22" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
-              <line x1="25" y1="12" x2="25" y2="22" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
-            </g>
-            <!-- Mano derecha -->
-            <g transform="translate(154, 130)">
-              <path d="M6,24 C2,16 10,9 17,13 C19,5 29,5 31,12 C39,10 43,20 37,27 C39,31 35,35 29,35 L13,35 C6,35 3,29 6,24 Z"
-                    fill="#FFFFFF" stroke="#0B192C" stroke-width="4.5" stroke-linejoin="round"/>
-              <line x1="18" y1="13" x2="18" y2="23" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
-              <line x1="28" y1="13" x2="27" y2="23" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
-            </g>
-          </svg>
-        </div>
-
-        <!-- Título Marca: Don Godoy / Morfate una BURGER -->
-        <div class="relative flex flex-col items-center sm:items-start pt-1 sm:pt-3">
-          <h1 class="font-script text-6xl sm:text-7xl tracking-tight text-[#0B192C] leading-[0.88] drop-shadow-[2px_2px_0px_rgba(255,255,255,0.9)]">
-            Don Godoy
-          </h1>
-          <div class="relative mt-1 flex items-center gap-1.5">
-            <span class="font-script text-2xl sm:text-3xl text-[#0B192C] -rotate-2">Morfate una</span>
-            <span class="font-display text-xl sm:text-2xl uppercase tracking-wider text-[#0B192C] -rotate-2">BURGER</span>
-          </div>
-          <!-- Subrayado swoosh -->
-          <svg class="w-48 sm:w-56 h-3 -mt-0.5 text-[#0B192C]" viewBox="0 0 220 14" fill="none">
-            <path d="M4 10 Q110 2 216 9" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-          </svg>
-
-          <!-- Rayos laterales derechos del logo -->
-          <svg class="hidden sm:block absolute -right-11 top-10 w-10 h-14 text-[#0B192C]" viewBox="0 0 40 60" fill="none">
-            <line x1="4" y1="18" x2="26" y2="6" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-            <line x1="6" y1="32" x2="34" y2="28" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-            <line x1="5" y1="45" x2="28" y2="52" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-          </svg>
-        </div>
+    <div class="text-center mt-4">
+      <div class="font-script text-4xl sm:text-5xl text-[#0B192C] leading-none">Don Godoy</div>
+      <div class="font-display text-2xl sm:text-3xl text-[#E0531A] mt-1">Morfate una BURGER</div>
+      <div class="mt-3 inline-block bg-[#0B192C] text-[#FFB800] font-display text-xl px-6 py-1.5 rounded-xl border-2 border-[#0B192C]">
+        NUESTRA CARTA
       </div>
-
-      <!-- Banner Principal Píldora Doble Borde: NUESTRA CARTA -->
-      <div class="relative w-full max-w-xl mt-2 sm:mt-1 z-10">
-        <!-- Rayos izquierdos -->
-        <svg class="hidden xs:block sm:block absolute -left-3 sm:-left-6 top-1/2 -translate-y-1/2 w-7 sm:w-9 h-14 text-[#0B192C]" viewBox="0 0 36 60" fill="none">
-          <line x1="30" y1="14" x2="8" y2="6" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="28" y1="30" x2="4" y2="30" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="30" y1="46" x2="8" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-        </svg>
-
-        <div class="mx-4 sm:mx-6 bg-[#FAF8F2] p-1.5 rounded-[30px] border-[3.5px] border-[#0B192C] shadow-[4px_4px_0px_#0B192C]">
-          <div class="bg-[#0B192C] rounded-[22px] py-2.5 sm:py-3 px-4">
-            <h2 class="font-display italic text-2xl sm:text-4xl tracking-wide text-[#FAF8F2] uppercase">
-              NUESTRA CARTA
-            </h2>
-          </div>
-        </div>
-
-        <!-- Rayos derechos -->
-        <svg class="hidden xs:block sm:block absolute -right-3 sm:-right-6 top-1/2 -translate-y-1/2 w-7 sm:w-9 h-14 text-[#0B192C]" viewBox="0 0 36 60" fill="none">
-          <line x1="6" y1="14" x2="28" y2="6" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="8" y1="30" x2="32" y2="30" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="6" y1="46" x2="28" y2="54" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-
-      <!-- Cinta Secundaria con Cajitas de Papas Fritas -->
-      <div class="w-full flex items-center justify-center gap-2 sm:gap-3 mt-3 px-1">
-        <!-- Cajita de papas izquierda -->
-        <svg class="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 -rotate-6" viewBox="0 0 80 80" fill="none">
-          <!-- Rayitos -->
-          <line x1="12" y1="34" x2="3" y2="30" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-          <line x1="11" y1="44" x2="2" y2="44" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-          <line x1="13" y1="54" x2="4" y2="59" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-          <!-- Papas -->
-          <rect x="24" y="14" width="6" height="24" rx="2" transform="rotate(-10 24 14)" fill="#FFF" stroke="#0B192C" stroke-width="3"/>
-          <rect x="33" y="10" width="6" height="26" rx="2" fill="#FFF" stroke="#0B192C" stroke-width="3"/>
-          <rect x="42" y="11" width="6" height="26" rx="2" transform="rotate(6 42 11)" fill="#FFF" stroke="#0B192C" stroke-width="3"/>
-          <rect x="50" y="15" width="6" height="24" rx="2" transform="rotate(14 50 15)" fill="#FFF" stroke="#0B192C" stroke-width="3"/>
-          <!-- Caja -->
-          <path d="M20,34 Q42,42 64,34 L57,70 Q42,74 27,70 Z" fill="#FFF" stroke="#0B192C" stroke-width="3.5" stroke-linejoin="round"/>
-        </svg>
-
-        <!-- Ribbon oscuro -->
-        <div class="ribbon-banner flex-1 max-w-md py-2 px-5 sm:px-7 shadow-md">
-          <p class="font-extrabold italic text-xs sm:text-sm md:text-base tracking-wide leading-tight uppercase text-[#FAF8F2]">
-            TODAS NUESTRAS BURGERS<br/>
-            <span class="text-[#FFB800]">VIENEN CON PAPAS FRITAS</span>
-          </p>
-        </div>
-
-        <!-- Cajita de papas derecha -->
-        <svg class="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 rotate-6" viewBox="0 0 80 80" fill="none">
-          <!-- Rayitos -->
-          <line x1="68" y1="34" x2="77" y2="30" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-          <line x1="69" y1="44" x2="78" y2="44" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-          <line x1="67" y1="54" x2="76" y2="59" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-          <!-- Papas -->
-          <rect x="24" y="15" width="6" height="24" rx="2" transform="rotate(-12 24 15)" fill="#FFF" stroke="#0B192C" stroke-width="3"/>
-          <rect x="33" y="11" width="6" height="26" rx="2" transform="rotate(-4 33 11)" fill="#FFF" stroke="#0B192C" stroke-width="3"/>
-          <rect x="42" y="10" width="6" height="26" rx="2" fill="#FFF" stroke="#0B192C" stroke-width="3"/>
-          <rect x="50" y="14" width="6" height="24" rx="2" transform="rotate(10 50 14)" fill="#FFF" stroke="#0B192C" stroke-width="3"/>
-          <!-- Caja -->
-          <path d="M16,34 Q38,42 60,34 L53,70 Q38,74 23,70 Z" fill="#FFF" stroke="#0B192C" stroke-width="3.5" stroke-linejoin="round"/>
-        </svg>
-      </div>
-
-      <p class="mt-2.5 text-xs sm:text-sm font-bold text-[#0B192C]/80 bg-[#FFB800]/25 px-3 py-1 rounded-full border border-[#0B192C]/30">
-        👇 Tocá <b>Simple</b>, <b>Doble</b> o <b>Triple</b> para personalizar y sumar
+      <p class="mt-2 text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-[#0B192C] text-white inline-block px-3 py-1 rounded-md">
+        Todas nuestras burgers vienen con papas fritas
       </p>
-    </header>
+      <div class="mt-2 text-xs font-bold bg-[#FFE699] border-2 border-[#0B192C] rounded-xl px-3 py-2 max-w-md mx-auto">
+        Tocá Simple, Doble o Triple para personalizar y sumar
+      </div>
+    </div>
+  </header>
 
-    <!-- ==================== 2. MENÚ DE HAMBURGUESAS ==================== -->
-    <section id="menuSection" class="mt-4 space-y-4" aria-label="Menú de Hamburguesas">
-      <!-- Se renderiza dinámicamente desde JS con las ilustraciones SVG únicas de cada burger -->
-    </section>
+  <main class="max-w-3xl mx-auto px-4 space-y-5">
+    <section id="menuContainer" class="space-y-4"></section>
 
-    <!-- ==================== 3. BLOQUES INFERIORES DEL FLYER (EXTRAS Y PERSONALIZÁ) ==================== -->
-    <section class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4" aria-label="Extras y Personalización">
-
-      <!-- Bloque Izquierdo: EXTRAS -->
-      <div class="ink-card p-4 flex flex-col justify-between">
-        <div>
-          <!-- Header cinta Extras -->
-          <div class="flex items-center justify-center gap-2 mb-3">
-            <svg class="w-5 h-5 text-[#0B192C]" viewBox="0 0 24 24" fill="none">
-              <line x1="18" y1="6" x2="6" y2="2" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              <line x1="17" y1="14" x2="4" y2="14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-            <div class="ribbon-banner px-6 py-1">
-              <h3 class="font-script text-2xl text-[#FAF8F2] leading-none">Extras</h3>
-            </div>
-            <svg class="w-5 h-5 text-[#0B192C]" viewBox="0 0 24 24" fill="none">
-              <line x1="6" y1="6" x2="18" y2="2" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              <line x1="7" y1="14" x2="20" y2="14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-          </div>
-
-          <ul id="extrasReferenceList" class="space-y-2 text-sm font-extrabold">
-            <!-- Generado por JS -->
-          </ul>
-        </div>
-
-        <p class="mt-3 pt-2 border-t-2 border-dashed border-[#0B192C]/25 text-[11px] font-bold text-[#0B192C]/75 text-center">
+    <section class="retro-card p-4 sm:p-5">
+      <div class="text-center mb-3">
+        <span class="inline-block bg-[#0B192C] text-white font-display text-2xl px-4 py-0.5 rounded-lg">Extras</span>
+        <p class="text-xs text-[#0B192C]/80 font-semibold mt-1.5">
           Elegilos al agregar tu burger o sumalos acá al último ítem del pedido.
         </p>
       </div>
-
-      <!-- Bloque Derecho: PERSONALIZÁ TU BURGER -->
-      <div class="ink-card p-4 flex flex-col justify-between">
-        <div>
-          <div class="flex justify-center mb-3">
-            <div class="ribbon-banner px-5 py-1.5">
-              <h3 class="font-script text-xl sm:text-2xl text-[#FAF8F2] leading-none">Personalizá tu burger</h3>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <!-- Ilustración SVG lineal Burger del flyer -->
-            <div class="w-24 sm:w-28 flex-shrink-0">
-              <svg viewBox="0 0 130 110" class="w-full h-auto" fill="none">
-                <!-- Rayitos -->
-                <line x1="28" y1="22" x2="14" y2="10" stroke="#0B192C" stroke-width="3.5" stroke-linecap="round"/>
-                <line x1="20" y1="34" x2="5" y2="28" stroke="#0B192C" stroke-width="3.5" stroke-linecap="round"/>
-                <line x1="18" y1="47" x2="4" y2="48" stroke="#0B192C" stroke-width="3.5" stroke-linecap="round"/>
-                <!-- Pan superior -->
-                <path d="M26,52 C26,22 114,22 114,52 C114,58 26,58 26,52 Z" fill="#FFF" stroke="#0B192C" stroke-width="4"/>
-                <!-- Semillas sésamo -->
-                <circle cx="52" cy="34" r="1.8" fill="#0B192C"/>
-                <circle cx="70" cy="30" r="1.8" fill="#0B192C"/>
-                <circle cx="88" cy="35" r="1.8" fill="#0B192C"/>
-                <circle cx="62" cy="42" r="1.8" fill="#0B192C"/>
-                <circle cx="80" cy="42" r="1.8" fill="#0B192C"/>
-                <!-- Lechuga / Queso -->
-                <path d="M22,60 Q36,68 48,60 Q60,69 72,60 Q84,69 96,60 Q108,68 118,60" stroke="#0B192C" stroke-width="4" stroke-linecap="round"/>
-                <!-- Medallón -->
-                <rect x="24" y="68" width="92" height="14" rx="7" fill="#FFF" stroke="#0B192C" stroke-width="4"/>
-                <!-- Pan inferior -->
-                <path d="M28,84 L112,84 C112,95 102,98 70,98 C38,98 28,95 28,84 Z" fill="#FFF" stroke="#0B192C" stroke-width="4"/>
-              </svg>
-            </div>
-
-            <!-- Lista de ingredientes personalizables -->
-            <ul id="toppingsReferenceList" class="flex-1 space-y-1.5 text-xs sm:text-sm font-extrabold">
-              <!-- Generado por JS -->
-            </ul>
-          </div>
-        </div>
-
-        <p class="mt-3 pt-2 border-t-2 border-dashed border-[#0B192C]/25 text-[11px] font-bold text-[#0B192C]/75 text-center">
-          Sin cargo podés quitar cualquier ingrediente base al pedir.
-        </p>
-      </div>
+      <div id="extrasContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
     </section>
 
-    <!-- ==================== 4. CARRITO / RESUMEN DEL PEDIDO ==================== -->
-    <section id="cartSection" class="mt-5 ink-card p-4 sm:p-5 bg-white">
-      <div class="flex items-center justify-between border-b-2 border-[#0B192C] pb-2.5 mb-3">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">🍔</span>
-          <h3 class="font-display italic text-lg sm:text-xl uppercase tracking-wide">Tu Pedido</h3>
-          <span id="cartCountBadge" class="bg-[#FFB800] text-[#0B192C] text-xs font-black px-2.5 py-0.5 rounded-full border-2 border-[#0B192C]">
-            0
-          </span>
-        </div>
-        <button
-          id="clearCartBtn"
-          type="button"
-          class="hidden text-xs font-extrabold text-red-600 hover:underline"
-        >
-          Vaciar pedido
-        </button>
-      </div>
-
-      <!-- Lista de items en el carrito -->
-      <div id="cartItemsContainer" class="space-y-3">
-        <div class="text-center py-6 px-3 bg-[#FAF8F2] rounded-2xl border-2 border-dashed border-[#0B192C]/30">
-          <p class="font-extrabold text-sm sm:text-base text-[#0B192C]">Todavía no agregaste ninguna burger</p>
-          <p class="text-xs font-semibold text-[#0B192C]/70 mt-1">
-            Elegí Simple, Doble o Triple arriba para armar tu combo con papas fritas 🍟
-          </p>
-        </div>
-      </div>
-
-      <!-- Subtotal y Total -->
-      <div id="cartTotalsBox" class="hidden mt-4 pt-3 border-t-[3px] border-[#0B192C] flex items-center justify-between">
-        <div>
-          <span class="block text-xs font-bold uppercase text-[#0B192C]/70">Total estimado</span>
-          <span class="text-[11px] font-semibold text-[#0B192C]/65">Incluye papas fritas en todas las burgers</span>
-        </div>
-        <div class="text-right">
-          <span id="cartTotalAmount" class="font-display text-2xl sm:text-3xl text-[#0B192C]">$0</span>
-        </div>
-      </div>
+    <section class="retro-card p-4 sm:p-5">
+      <h2 class="font-display text-2xl text-center mb-2">Personalizá tu burger</h2>
+      <div id="referenceContainer" class="text-sm space-y-2"></div>
     </section>
 
-    <!-- ==================== 5. MODALIDAD DE ENTREGA Y DATOS DEL CLIENTE ==================== -->
-    <section class="mt-5 space-y-3" aria-label="Modalidad de entrega y datos">
-      <!-- Toggle Píldora idéntico al flyer: Delivery / Retiro por el local -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <!-- Opción Delivery -->
-        <button
-          id="btnDelivery"
-          type="button"
-          class="delivery-toggle active flex items-center justify-between px-5 py-3.5 rounded-full border-[3.5px] border-[#0B192C] bg-[#0B192C] text-[#FAF8F2] shadow-[4px_4px_0px_#0B192C] transition-all"
-          data-mode="delivery"
-        >
-          <div class="flex items-center gap-3">
-            <!-- Ícono SVG Motito Delivery -->
-            <svg class="w-10 h-8 flex-shrink-0" viewBox="0 0 64 46" fill="none">
-              <line x1="2" y1="16" x2="14" y2="16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              <line x1="5" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              <line x1="2" y1="30" x2="12" y2="30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="22" cy="35" r="6.5" stroke="currentColor" stroke-width="3.2"/>
-              <circle cx="50" cy="35" r="6.5" stroke="currentColor" stroke-width="3.2"/>
-              <path d="M18,27 L34,27 L41,14 L49,14 L52,27 L44,33" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="17" y="14" width="14" height="11" rx="2.5" stroke="currentColor" stroke-width="3"/>
-            </svg>
-            <span class="font-extrabold italic text-lg sm:text-xl tracking-wide">Delivery</span>
-          </div>
-          <!-- Check circle -->
-          <span class="mode-radio w-7 h-7 rounded-full border-[3px] border-current flex items-center justify-center bg-[#FAF8F2] text-[#0B192C]">
-            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-            </svg>
-          </span>
-        </button>
-
-        <!-- Opción Retiro por el local -->
-        <button
-          id="btnPickup"
-          type="button"
-          class="delivery-toggle flex items-center justify-between px-5 py-3.5 rounded-full border-[3.5px] border-[#0B192C] bg-white text-[#0B192C] shadow-[4px_4px_0px_#0B192C] transition-all"
-          data-mode="pickup"
-        >
-          <div class="flex items-center gap-3">
-            <!-- Ícono SVG Local / Storefront -->
-            <svg class="w-9 h-8 flex-shrink-0" viewBox="0 0 48 44" fill="none">
-              <path d="M6,16 L10,6 L38,6 L42,16" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
-              <path d="M6,16 C6,20 12,20 12,16 C12,20 18,20 18,16 C18,20 24,20 24,16 C24,20 30,20 30,16 C30,20 36,20 36,16 C36,20 42,20 42,16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              <path d="M9,19 L9,38 L39,38 L39,19" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
-              <rect x="19" y="25" width="10" height="13" stroke="currentColor" stroke-width="3"/>
-            </svg>
-            <span class="font-extrabold italic text-base sm:text-lg tracking-wide text-left leading-tight">Retiro por el local</span>
-          </div>
-          <!-- Radio circle -->
-          <span class="mode-radio w-7 h-7 rounded-full border-[3px] border-current flex items-center justify-center">
-          </span>
-        </button>
-      </div>
-
-      <!-- Formulario de datos para enviar bien completo por WhatsApp -->
-      <div class="ink-card p-4 sm:p-5 space-y-3.5 bg-white">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label for="customerName" class="block text-xs font-black uppercase tracking-wider mb-1">
-              Tu Nombre *
-            </label>
-            <input
-              id="customerName"
-              type="text"
-              placeholder="Ej: Lucas"
-              class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#0B192C] bg-[#FAF8F2] font-bold text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#FFB800]"
-            />
-          </div>
-
-          <div>
-            <label for="paymentMethod" class="block text-xs font-black uppercase tracking-wider mb-1">
-              Método de Pago *
-            </label>
-            <select
-              id="paymentMethod"
-              class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#0B192C] bg-[#FAF8F2] font-bold text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#FFB800]"
-            >
-              <option value="Efectivo">💵 Efectivo</option>
-              <option value="Transferencia">🏦 Transferencia</option>
-              <option value="Mercado Pago">📱 Mercado Pago</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Campos de Dirección (se muestran en modo Delivery) -->
-        <div id="deliveryAddressFields" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label for="customerAddress" class="block text-xs font-black uppercase tracking-wider mb-1">
-              Dirección (Berazategui / Zona) *
-            </label>
-            <input
-              id="customerAddress"
-              type="text"
-              placeholder="Ej: Calle 14 N° 4520 e/ 145 y 146"
-              class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#0B192C] bg-[#FAF8F2] font-bold text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#FFB800]"
-            />
-          </div>
-          <div>
-            <label for="addressRef" class="block text-xs font-black uppercase tracking-wider mb-1">
-              Entre calles / Referencias
-            </label>
-            <input
-              id="addressRef"
-              type="text"
-              placeholder="Ej: Portón negro, timbre arriba"
-              class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#0B192C] bg-[#FAF8F2] font-bold text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#FFB800]"
-            />
-          </div>
-        </div>
-
-        <!-- Aviso si elige Retiro por el local -->
-        <div id="pickupInfoBox" class="hidden p-3 rounded-xl bg-[#FFB800]/20 border-2 border-[#0B192C] text-xs sm:text-sm font-bold flex items-center gap-2.5">
-          <span class="text-lg">📍</span>
-          <span>Retirás tu pedido por nuestro local en <b>Berazategui</b>. Te confirmamos la demora por WhatsApp apenas recibimos tu mensaje.</span>
+    <section class="retro-card p-4 sm:p-5">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="font-display text-2xl">Tu Pedido</h2>
+        <div class="flex gap-2">
+          <button id="btnDelivery" type="button" class="retro-btn px-3 py-1 rounded-lg text-xs font-extrabold bg-[#FFB800]">Delivery</button>
+          <button id="btnPickup" type="button" class="retro-btn px-3 py-1 rounded-lg text-xs font-extrabold bg-white">Retiro</button>
+          <button id="clearCartBtn" type="button" class="retro-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-[#F1EDE1]">Vaciar</button>
         </div>
       </div>
+
+      <div id="cartItems" class="space-y-2.5 text-sm"></div>
+
+      <div class="mt-4 pt-3 border-t-2 border-dashed border-[#0B192C] space-y-2">
+        <input id="customerName" type="text" placeholder="Tu nombre" class="w-full px-3 py-2 rounded-xl border-2 border-[#0B192C] bg-white text-sm font-semibold" />
+        <input id="customerAddress" type="text" placeholder="Dirección y localidad (ej. Berazategui / Hudson)" class="w-full px-3 py-2 rounded-xl border-2 border-[#0B192C] bg-white text-sm font-semibold" />
+        <input id="customerNotes" type="text" placeholder="Aclaraciones del envío o pago (opcional)" class="w-full px-3 py-2 rounded-xl border-2 border-[#0B192C] bg-white text-sm font-semibold" />
+      </div>
+
+      <div class="mt-4 flex items-center justify-between font-display text-2xl">
+        <span>TOTAL</span>
+        <span id="cartTotal">$0</span>
+      </div>
+
+      <button id="sendWhatsAppBtn" type="button" class="retro-btn w-full mt-3 py-3 rounded-xl bg-[#25D366] text-[#0B192C] font-display text-2xl">
+        Enviar pedido por WhatsApp
+      </button>
     </section>
-
-    <!-- ==================== 6. BOTÓN PRINCIPAL WHATSAPP + CHECKER CORNERS INFERIORES ==================== -->
-    <footer class="relative mt-6 pb-6">
-      <div class="relative z-10 max-w-xl mx-auto">
-        <div class="bg-[#FAF8F2] p-1.5 rounded-[40px] border-[4px] border-[#0B192C] shadow-[5px_5px_0px_#0B192C]">
-          <button
-            id="sendWhatsAppBtn"
-            type="button"
-            class="w-full bg-[#0B192C] hover:bg-[#132946] active:translate-y-0.5 text-[#FAF8F2] rounded-[32px] py-4 px-5 flex items-center justify-center gap-3 sm:gap-4 transition-all group cursor-pointer"
-          >
-            <!-- Rayos izquierdos -->
-            <svg class="hidden sm:block w-7 h-12 text-[#FAF8F2] group-hover:text-[#FFB800] transition-colors" viewBox="0 0 30 52" fill="none">
-              <line x1="25" y1="12" x2="6" y2="5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-              <line x1="23" y1="26" x2="4" y2="26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-              <line x1="25" y1="40" x2="6" y2="47" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-            </svg>
-
-            <!-- Ícono WhatsApp SVG -->
-            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-[#0B192C] flex items-center justify-center flex-shrink-0 border-[3px] border-[#FAF8F2] group-hover:scale-105 transition-transform">
-              <svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M16.004 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.256.59 4.46 1.71 6.404L3.1 29.02l6.786-1.78a12.74 12.74 0 0 0 6.118 1.56h.006c7.058 0 12.796-5.74 12.796-12.8 0-3.42-1.332-6.636-3.75-9.054A12.716 12.716 0 0 0 16.004 3.2zm0 23.436h-.004a10.6 10.6 0 0 1-5.404-1.48l-.388-.23-4.026 1.056 1.074-3.926-.252-.402a10.586 10.586 0 0 1-1.624-5.654c0-5.862 4.77-10.632 10.636-10.632 2.84 0 5.51 1.108 7.518 3.116a10.562 10.562 0 0 1 3.114 7.52c0 5.864-4.772 10.632-10.644 10.632zm5.834-7.964c-.32-.16-1.892-.934-2.186-1.04-.292-.106-.506-.16-.72.16-.212.32-.824 1.04-1.01 1.254-.186.212-.372.24-.692.08-.32-.16-1.35-.498-2.572-1.588-.95-.848-1.592-1.896-1.778-2.216-.186-.32-.02-.492.14-.652.144-.144.32-.372.48-.558.16-.186.212-.32.32-.532.106-.214.052-.4-.026-.56-.08-.16-.72-1.734-.986-2.374-.26-.624-.524-.54-.72-.55l-.614-.01c-.212 0-.558.08-.85.4-.292.32-1.118 1.092-1.118 2.664s1.144 3.09 1.304 3.304c.16.212 2.252 3.438 5.456 4.822.762.328 1.356.524 1.82.672.766.244 1.462.21 2.012.128.614-.092 1.892-.774 2.158-1.52.266-.746.266-1.386.186-1.52-.08-.134-.292-.214-.612-.374z"/>
-              </svg>
-            </div>
-
-            <div class="text-left sm:text-center leading-tight">
-              <span class="block font-display italic text-lg sm:text-2xl tracking-wide uppercase text-[#FAF8F2] group-hover:text-[#FFB800] transition-colors">
-                HACÉ TU PEDIDO
-              </span>
-              <span class="block font-display italic text-lg sm:text-2xl tracking-wide uppercase text-[#FAF8F2]">
-                POR WHATSAPP
-              </span>
-            </div>
-
-            <!-- Rayos derechos -->
-            <svg class="hidden sm:block w-7 h-12 text-[#FAF8F2] group-hover:text-[#FFB800] transition-colors" viewBox="0 0 30 52" fill="none">
-              <line x1="5" y1="12" x2="24" y2="5" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-              <line x1="7" y1="26" x2="26" y2="26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-              <line x1="5" y1="40" x2="24" y2="47" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Esquinas inferiores con bandera a cuadros -->
-      <div class="checker-corner absolute bottom-0 left-0 pointer-events-none opacity-95" aria-hidden="true"></div>
-      <div class="checker-corner absolute bottom-0 right-0 pointer-events-none opacity-95" aria-hidden="true"></div>
-    </footer>
   </main>
 
-  <!-- ==================== BARRA FLOTANTE INFERIOR EN MÓVIL ==================== -->
-  <div id="mobileStickyBar" class="fixed bottom-0 inset-x-0 z-40 sm:hidden bg-[#0B192C] text-[#FAF8F2] border-t-[3.5px] border-[#FFB800] px-4 py-2.5 flex items-center justify-between shadow-2xl translate-y-full transition-transform duration-200">
-    <a href="#cartSection" class="flex items-center gap-2.5">
-      <span id="stickyCount" class="bg-[#FFB800] text-[#0B192C] font-black text-xs w-6 h-6 rounded-full flex items-center justify-center">0</span>
-      <div>
-        <span class="block text-[10px] uppercase font-bold text-[#FAF8F2]/75">Ver mi pedido</span>
-        <span id="stickyTotal" class="font-display text-base text-[#FFB800]">$0</span>
+  <div id="customModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="retro-card w-full max-w-md p-5 max-h-[90vh] overflow-y-auto space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 id="modalTitle" class="font-display text-2xl">Personalizar</h3>
+        <button id="closeModalBtn" type="button" class="retro-btn px-2.5 py-1 rounded-lg font-bold bg-[#F1EDE1]">✕</button>
       </div>
-    </a>
-    <button
-      type="button"
-      onclick="document.getElementById('sendWhatsAppBtn').click()"
-      class="bg-[#25D366] text-[#0B192C] font-black text-xs uppercase px-3.5 py-2 rounded-full border-2 border-[#FAF8F2] flex items-center gap-1.5"
-    >
-      <span>Pedir WSP</span>
-      <span>→</span>
-    </button>
-  </div>
-
-  <!-- ==================== MODAL PERSONALIZACIÓN DE BURGER ==================== -->
-  <div id="customModal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-[#0B192C]/70 backdrop-blur-[2px] p-0 sm:p-4">
-    <div class="w-full max-w-lg bg-[#FAF8F2] border-t-[4px] sm:border-[4px] border-[#0B192C] rounded-t-[30px] sm:rounded-[30px] shadow-2xl max-h-[92vh] flex flex-col overflow-hidden">
-      <!-- Header Modal -->
-      <div class="bg-[#0B192C] text-[#FAF8F2] px-5 py-4 flex items-center justify-between">
-        <div>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-[#FFB800]">Armá tu burger con papas 🍟</span>
-          <h3 id="modalBurgerTitle" class="font-script text-3xl leading-none mt-0.5">Cheese Burger</h3>
+      <div id="modalContent" class="space-y-3 text-sm"></div>
+      <div class="flex items-center justify-between pt-2 border-t-2 border-[#0B192C]">
+        <div class="flex items-center gap-2">
+          <button id="modalQtyMinus" type="button" class="retro-btn w-8 h-8 rounded-lg font-extrabold bg-[#F1EDE1]">-</button>
+          <span id="modalQtyValue" class="font-extrabold text-base px-1">1</span>
+          <button id="modalQtyPlus" type="button" class="retro-btn w-8 h-8 rounded-lg font-extrabold bg-[#F1EDE1]">+</button>
         </div>
-        <button id="closeModalBtn" type="button" class="w-9 h-9 rounded-full bg-[#FAF8F2] text-[#0B192C] font-black text-lg flex items-center justify-center border-2 border-[#0B192C]">
-          ✕
-        </button>
-      </div>
-
-      <!-- Cuerpo Modal Scrollable -->
-      <div class="p-4 sm:p-5 overflow-y-auto space-y-4">
-        <!-- Selector de tamaño Simple / Doble / Triple -->
-        <div>
-          <label class="block text-xs font-black uppercase tracking-wider mb-2">1. Elegí el tamaño:</label>
-          <div id="modalSizeSelector" class="grid grid-cols-3 gap-2.5">
-            <!-- Botones generados por JS -->
-          </div>
-        </div>
-
-        <!-- Personalizá ingredientes base (Sin cargo) -->
-        <div class="bg-white p-3.5 rounded-2xl border-[2.5px] border-[#0B192C]">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase tracking-wider">2. Ingredientes incluidos (Sin cargo):</span>
-            <span class="text-[10px] font-bold text-[#0B192C]/65">Destildá lo que no quieras</span>
-          </div>
-          <div id="modalBaseToppings" class="grid grid-cols-2 gap-2">
-            <!-- Checkboxes generados por JS -->
-          </div>
-        </div>
-
-        <!-- Extras pagos -->
-        <div class="bg-white p-3.5 rounded-2xl border-[2.5px] border-[#0B192C]">
-          <span class="block text-xs font-black uppercase tracking-wider mb-2">3. Sumale Extras:</span>
-          <div id="modalPaidExtras" class="space-y-2">
-            <!-- Checkboxes extras generados por JS -->
-          </div>
-        </div>
-
-        <!-- Notas opcionales -->
-        <div>
-          <label for="modalItemNotes" class="block text-xs font-black uppercase tracking-wider mb-1">
-            4. Notas para la cocina (opcional):
-          </label>
-          <input
-            id="modalItemNotes"
-            type="text"
-            placeholder="Ej: Sin sal en las papas, carne bien cocida..."
-            class="w-full px-3.5 py-2 rounded-xl border-[2.5px] border-[#0B192C] bg-white font-bold text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#FFB800]"
-          />
-        </div>
-      </div>
-
-      <!-- Footer Modal: Cantidad y Confirmar -->
-      <div class="p-4 bg-white border-t-[3px] border-[#0B192C] flex items-center justify-between gap-3">
-        <!-- Control de cantidad -->
-        <div class="flex items-center border-[2.5px] border-[#0B192C] rounded-full bg-[#FAF8F2] px-1.5 py-1">
-          <button id="modalQtyMinus" type="button" class="w-8 h-8 rounded-full font-black text-lg hover:bg-[#FFB800] transition-colors">−</button>
-          <span id="modalQtyValue" class="w-8 text-center font-black text-base">1</span>
-          <button id="modalQtyPlus" type="button" class="w-8 h-8 rounded-full font-black text-lg hover:bg-[#FFB800] transition-colors">+</button>
-        </div>
-
-        <button
-          id="confirmAddToCartBtn"
-          type="button"
-          class="flex-1 bg-[#FFB800] hover:bg-[#f5b000] text-[#0B192C] font-black text-sm sm:text-base uppercase py-3 px-4 rounded-full border-[3px] border-[#0B192C] shadow-[3px_3px_0px_#0B192C] active:translate-y-0.5 transition-all flex items-center justify-between"
-        >
-          <span>Agregar al pedido</span>
-          <span id="modalLivePrice" class="font-display text-base sm:text-lg">$7.500</span>
+        <button id="confirmAddToCartBtn" type="button" class="retro-btn px-4 py-2 rounded-xl bg-[#FFB800] font-display text-xl">
+          Agregar · <span id="modalPricePreview">$0</span>
         </button>
       </div>
     </div>
   </div>
+    <script>
+    const FIXED_WHATSAPP = '5491161428513';
+    let storeWhatsapp = FIXED_WHATSAPP;
+    let orderMode = 'Delivery';
+    let cart = [];
 
-  <!-- ==================== MODAL CONFIGURACIÓN WHATSAPP DEL LOCAL ==================== -->
-  <div id="settingsModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-[#0B192C]/70 backdrop-blur-[2px] p-4">
-    <div class="w-full max-w-md bg-[#FAF8F2] border-[4px] border-[#0B192C] rounded-[28px] shadow-[6px_6px_0px_#0B192C] overflow-hidden">
-      <div class="bg-[#0B192C] text-[#FAF8F2] px-5 py-3.5 flex items-center justify-between">
-        <h3 class="font-display italic text-lg uppercase">Configuración Don Godoy</h3>
-        <button id="closeSettingsBtn" type="button" class="w-8 h-8 rounded-full bg-[#FAF8F2] text-[#0B192C] font-black">✕</button>
-      </div>
-      <div class="p-5 space-y-3">
-        <p class="text-xs font-bold text-[#0B192C]/80 leading-relaxed">
-          Ingresá el número de WhatsApp de <b>Don Godoy</b> donde van a llegar los pedidos (con código de país y área, sin el signo + ni espacios).
-        </p>
-        <div>
-          <label for="whatsappPhoneInput" class="block text-xs font-black uppercase mb-1">Número de WhatsApp:</label>
-          <input
-            id="whatsappPhoneInput"
-            type="tel"
-            placeholder="5491112345678"
-            class="w-full px-3.5 py-2.5 rounded-xl border-[2.5px] border-[#0B192C] bg-white font-extrabold text-base focus:outline-none focus:ring-2 focus:ring-[#FFB800]"
-          />
-          <span class="block text-[11px] font-semibold text-[#0B192C]/65 mt-1">
-            Ejemplo Argentina (AMBA/Berazategui): <b>54911</b> seguido de los 8 dígitos.
-          </span>
-        </div>
-        <button
-          id="saveSettingsBtn"
-          type="button"
-          class="w-full bg-[#0B192C] text-[#FAF8F2] hover:bg-[#173052] font-black uppercase text-sm py-3 rounded-full border-2 border-[#0B192C] shadow-[3px_3px_0px_#FFB800]"
-        >
-          Guardar Número
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== TOAST / CAJA DE MENSAJES (SIN ALERT()) ==================== -->
-  <div id="toastBox" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 -translate-y-4 transition-all duration-200">
-    <div id="toastContent" class="bg-[#0B192C] text-[#FAF8F2] border-[3px] border-[#FFB800] px-4 py-2.5 rounded-full shadow-xl font-extrabold text-xs sm:text-sm flex items-center gap-2">
-      <span id="toastIcon">🍔</span>
-      <span id="toastText">¡Burger agregada!</span>
-    </div>
-  </div>
-
-  <!-- ==================== LÓGICA DE LA APLICACIÓN ==================== -->
-  <script>
-    // Datos exactos de la carta de Don Godoy
-    const BURGERS_MENU = [
+    const BURGERS = [
       {
         id: 'cheese-burger',
         name: 'Cheese Burger',
-        description: 'Hamburguesa con queso cheddar.',
-        prices: { Simple: 7500, Doble: 10900, Triple: 14500 },
-        defaultToppings: ['Queso cheddar']
+        desc: 'Medallón smash con doble cheddar y salsa de la casa.',
+        prices: { Simple: 6500, Doble: 8200, Triple: 9900 },
+        toppings: ['Cheddar', 'Cebolla morada', 'Pepinillos', 'Salsa Don Godoy']
       },
       {
         id: 'cheese-bacon',
         name: 'Cheese Bacon',
-        description: 'Hamburguesa, queso cheddar y bacon crocante.',
-        prices: { Simple: 8900, Doble: 12900, Triple: 16900 },
-        defaultToppings: ['Queso cheddar', 'Bacon']
+        desc: 'Doble cheddar fundido, panceta crocante y barbacoa suave.',
+        prices: { Simple: 7200, Doble: 8900, Triple: 10600 },
+        toppings: ['Cheddar', 'Panceta', 'Cebolla crispy', 'Salsa BBQ']
       },
       {
-        id: 'burger-classic',
-        name: 'Burger Classic',
-        description: 'Hamburguesa, lechuga, tomate y queso cheddar.',
-        prices: { Simple: 8500, Doble: 12500, Triple: 16500 },
-        defaultToppings: ['Queso cheddar', 'Lechuga', 'Tomate']
-      },
-      {
-        id: 'burger-magic',
-        name: 'Burger Magic',
-        description: 'Hamburguesa, bacon, huevo, cebolla caramelizada y queso cheddar.',
-        prices: { Simple: 9900, Doble: 13900, Triple: 17900 },
-        defaultToppings: ['Queso cheddar', 'Bacon', 'Huevo', 'Cebolla caramelizada']
+        id: 'don-godoy-special',
+        name: 'Don Godoy Special',
+        desc: 'Cebolla caramelizada, doble cheddar, panceta y aderezo especial.',
+        prices: { Simple: 7600, Doble: 9300, Triple: 11000 },
+        toppings: ['Cheddar', 'Panceta', 'Cebolla caramelizada', 'Salsa Don Godoy']
       }
     ];
 
-    const PAID_EXTRAS = [
-      { id: 'extra-cheddar', name: 'Cheddar extra', price: 1000 },
-      { id: 'extra-bacon', name: 'Bacon extra', price: 1500 },
-      { id: 'extra-huevo', name: 'Huevo extra', price: 1200 },
-      { id: 'extra-cebolla', name: 'Cebolla caramelizada extra', price: 1200 },
-      { id: 'extra-carne', name: 'Hamburguesa extra', price: 2500 }
+    const EXTRAS = [
+      { id: 'extra-patty', name: 'Medallón extra', price: 2200 },
+      { id: 'extra-cheddar', name: 'Doble cheddar extra', price: 1400 },
+      { id: 'extra-bacon', name: 'Panceta extra', price: 1600 },
+      { id: 'extra-sauce', name: 'Dip salsa Don Godoy', price: 1100 }
     ];
 
-    const ALL_TOPPINGS = [
-      'Queso cheddar',
-      'Bacon',
-      'Lechuga',
-      'Tomate',
-      'Huevo',
-      'Cebolla caramelizada'
-    ];
-
-    // Estado de la aplicación
-    let cart = [];
-    let deliveryMode = 'delivery'; // 'delivery' | 'pickup'
-    let storeWhatsApp = localStorage.getItem('donGodoy_wsp') || '5491100000000';
-
-    // Estado temporal del modal de personalización
     let activeModalState = {
       burger: null,
-      size: 'Simple',
-      selectedToppings: [],
+      size: 'Doble',
+      qty: 1,
+      removedToppings: [],
       selectedExtras: [],
-      notes: '',
-      qty: 1
+      notes: ''
     };
 
-    // Formateador de moneda argentina ($7.500)
     function formatARS(amount) {
-      return '$' + amount.toLocaleString('es-AR');
+      return '$' + Number(amount || 0).toLocaleString('es-AR');
     }
 
-    // Notificación visual no intrusiva (reemplaza alert)
-    let toastTimer = null;
-    function showToast(message, icon = '🍔') {
-      const box = document.getElementById('toastBox');
-      document.getElementById('toastText').textContent = message;
-      document.getElementById('toastIcon').textContent = icon;
-      box.classList.remove('opacity-0', '-translate-y-4');
-      box.classList.add('opacity-100', 'translate-y-0');
-
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
-        box.classList.add('opacity-0', '-translate-y-4');
-        box.classList.remove('opacity-100', 'translate-y-0');
-      }, 2800);
-    }
-
-    // Ilustraciones SVG a todo color estilo retro cartoon para cada una de las 4 burgers
-    function getBurgerIllustrationSVG(burgerId) {
-      // Elementos base compartidos (rayos, pan, carne, papas fritas)
-      const rays = `
-        <line x1="12" y1="26" x2="2" y2="18" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-        <line x1="9" y1="38" x2="1" y2="38" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-        <line x1="12" y1="50" x2="3" y2="57" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-        <line x1="115" y1="24" x2="126" y2="15" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-        <line x1="119" y1="36" x2="130" y2="33" stroke="#0B192C" stroke-width="3.2" stroke-linecap="round"/>
-      `;
-
-      const topBun = `
-        <path d="M22,48 C22,16 108,16 108,48 C108,54 22,54 22,48 Z" fill="#F4A236" stroke="#0B192C" stroke-width="3.5"/>
-        <path d="M32,33 C42,22 86,21 98,32" fill="none" stroke="#FFD27D" stroke-width="3.5" stroke-linecap="round"/>
-        <ellipse cx="46" cy="27" rx="2.3" ry="1.3" transform="rotate(-15 46 27)" fill="#FFF4D2"/>
-        <ellipse cx="64" cy="24" rx="2.3" ry="1.3" fill="#FFF4D2"/>
-        <ellipse cx="82" cy="27" rx="2.3" ry="1.3" transform="rotate(15 82 27)" fill="#FFF4D2"/>
-        <ellipse cx="55" cy="35" rx="2.3" ry="1.3" fill="#FFF4D2"/>
-        <ellipse cx="74" cy="34" rx="2.3" ry="1.3" fill="#FFF4D2"/>
-      `;
-
-      const bottomBun = `
-        <path d="M24,78 L104,78 C104,88 94,91 64,91 C34,91 24,88 24,78 Z" fill="#E89328" stroke="#0B192C" stroke-width="3.5"/>
-      `;
-
-      const pattyAndCheese = `
-        <rect x="20" y="62" width="90" height="16" rx="8" fill="#4E2712" stroke="#0B192C" stroke-width="3.5"/>
-        <path d="M20,54 L110,54 L106,62 L84,64 L66,73 L50,62 L24,62 Z" fill="#FFC300" stroke="#0B192C" stroke-width="3.2" stroke-linejoin="round"/>
-      `;
-
-      const friesPile = `
-        <g transform="translate(76, 62)">
-          <rect x="6" y="14" width="34" height="7" rx="2.5" transform="rotate(-18 6 14)" fill="#FFD026" stroke="#0B192C" stroke-width="2.8"/>
-          <rect x="14" y="8" width="36" height="7" rx="2.5" transform="rotate(-8 14 8)" fill="#FFBE0B" stroke="#0B192C" stroke-width="2.8"/>
-          <rect x="18" y="16" width="38" height="7" rx="2.5" transform="rotate(6 18 16)" fill="#FFD026" stroke="#0B192C" stroke-width="2.8"/>
-          <rect x="10" y="21" width="38" height="7" rx="2.5" transform="rotate(-3 10 21)" fill="#FFBE0B" stroke="#0B192C" stroke-width="2.8"/>
-          <rect x="22" y="23" width="36" height="7" rx="2.5" transform="rotate(14 22 23)" fill="#FFD026" stroke="#0B192C" stroke-width="2.8"/>
-          <rect x="4" y="26" width="36" height="6.5" rx="2.5" fill="#FFE066" stroke="#0B192C" stroke-width="2.8"/>
-        </g>
-      `;
-
-      let middleLayer = '';
-
-      if (burgerId === 'cheese-burger') {
-        middleLayer = pattyAndCheese;
-      } else if (burgerId === 'cheese-bacon') {
-        middleLayer = `
-          ${pattyAndCheese}
-          <!-- Tiras de bacon crocante -->
-          <path d="M16,52 Q32,46 46,53 Q62,58 78,51 Q94,46 112,53 L110,59 Q92,53 77,58 Q61,63 45,58 Q30,53 18,58 Z"
-                fill="#C8432E" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"/>
-          <path d="M24,55 Q42,52 58,56" stroke="#F6B89E" stroke-width="2.2" stroke-linecap="round"/>
-        `;
-      } else if (burgerId === 'burger-classic') {
-        middleLayer = `
-          ${pattyAndCheese}
-          <!-- Tomate -->
-          <rect x="26" y="54" width="34" height="7" rx="3" fill="#E63946" stroke="#0B192C" stroke-width="2.8"/>
-          <rect x="68" y="54" width="34" height="7" rx="3" fill="#E63946" stroke="#0B192C" stroke-width="2.8"/>
-          <!-- Lechuga ondulada -->
-          <path d="M17,50 C25,44 33,55 42,49 C51,43 59,55 68,49 C77,43 85,55 94,49 C103,44 109,53 113,50 L111,56 C102,59 94,52 84,56 C74,60 66,52 56,56 C46,60 36,52 26,56 L18,55 Z"
-                fill="#4CB944" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"/>
-        `;
-      } else if (burgerId === 'burger-magic') {
-        middleLayer = `
-          ${pattyAndCheese}
-          <!-- Bacon y cebolla caramelizada -->
-          <path d="M17,55 Q36,49 54,56 Q74,60 92,53 Q104,50 113,55 L110,60 Q92,56 74,62 Q54,64 36,58 L19,60 Z"
-                fill="#C8432E" stroke="#0B192C" stroke-width="2.8"/>
-          <!-- Huevo frito encima -->
-          <path d="M24,49 C24,43 106,43 106,49 C106,54 88,55 65,55 C42,55 24,54 24,49 Z"
-                fill="#FFFFFF" stroke="#0B192C" stroke-width="3"/>
-          <ellipse cx="64" cy="46" rx="14" ry="7" fill="#FFB703" stroke="#0B192C" stroke-width="2.8"/>
-          <ellipse cx="60" cy="44" rx="4" ry="1.8" fill="#FFF3B0"/>
-        `;
-      }
-
-      return `
-        <svg viewBox="0 0 138 98" class="w-full h-auto drop-shadow-sm" fill="none">
-          ${rays}
-          ${bottomBun}
-          ${middleLayer}
-          ${topBun}
-          ${friesPile}
-        </svg>
-      `;
-    }
-
-    // Renderiza las tarjetas del menú principal
     function renderMenu() {
-      const container = document.getElementById('menuSection');
-      container.innerHTML = BURGERS_MENU.map(burger => `
-        <article class="ink-card p-3.5 sm:p-4 flex flex-col md:flex-row items-center gap-3 md:gap-4">
-          <!-- Ilustración + Nombre y Descripción -->
-          <div class="w-full md:w-[54%] flex items-center gap-3">
-            <div class="w-28 sm:w-32 flex-shrink-0">
-              ${getBurgerIllustrationSVG(burger.id)}
+      const container = document.getElementById('menuContainer');
+      if (!container) return;
+      container.innerHTML = BURGERS.map((b) => `
+        <article class="retro-card p-4 sm:p-5">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <h3 class="font-display text-2xl">${b.name}</h3>
+              <p class="text-xs sm:text-sm text-[#0B192C]/80 font-medium">${b.desc}</p>
             </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="font-script text-2xl sm:text-3xl text-[#0B192C] leading-none mb-1">
-                ${burger.name}
-              </h3>
-              <p class="text-xs sm:text-[13px] font-bold text-[#0B192C]/85 leading-snug">
-                ${burger.description}
-              </p>
+            <div class="flex flex-wrap gap-2">
+              ${Object.entries(b.prices).map(([size, price]) => `
+                <button type="button" onclick="openCustomizeModal('${b.id}', '${size}')" class="retro-btn px-3 py-1.5 rounded-xl bg-[#FFB800] text-xs font-extrabold">
+                  ${size} · ${formatARS(price)}
+                </button>
+              `).join('')}
             </div>
-          </div>
-
-          <!-- Divisor vertical en desktop / horizontal en mobile -->
-          <div class="w-full h-[2px] md:w-[2.5px] md:h-16 bg-[#0B192C]/20 md:bg-[#0B192C] rounded-full"></div>
-
-          <!-- Columnas Simple / Doble / Triple interactivas -->
-          <div class="w-full md:w-[46%] grid grid-cols-3 gap-2">
-            ${['Simple', 'Doble', 'Triple'].map(size => `
-              <button
-                type="button"
-                onclick="openCustomizeModal('${burger.id}', '${size}')"
-                class="size-pill-btn bg-[#FAF8F2] hover:bg-[#FFB800]/30 rounded-2xl p-2 flex flex-col items-center justify-center group cursor-pointer"
-                title="Agregar ${burger.name} ${size}"
-              >
-                <span class="w-full bg-[#0B192C] group-hover:bg-[#FFB800] group-hover:text-[#0B192C] text-[#FAF8F2] font-script text-sm sm:text-base py-0.5 px-2 rounded-full transition-colors">
-                  ${size}
-                </span>
-                <span class="font-display text-sm sm:text-base text-[#0B192C] mt-1.5 tracking-tight">
-                  ${formatARS(burger.prices[size])}
-                </span>
-                <span class="text-[10px] font-black uppercase text-[#0B192C]/60 group-hover:text-[#0B192C] mt-0.5">
-                  + Pedir
-                </span>
-              </button>
-            `).join('')}
           </div>
         </article>
       `).join('');
     }
 
-    // Renderiza los bloques inferiores de referencia ("Extras" y "Personalizá tu burger")
-    function renderReferenceBlocks() {
-      const extrasList = document.getElementById('extrasReferenceList');
-      extrasList.innerHTML = PAID_EXTRAS.map(extra => `
-        <li class="flex items-center justify-between gap-2 py-0.5">
-          <button
-            type="button"
-            onclick="quickAddExtraToLastBurger('${extra.id}')"
-            class="flex items-center gap-2 text-left hover:text-[#E09400] transition-colors group"
-            title="Sumar ${extra.name} a tu última burger"
-          >
-            <span class="w-5 h-5 rounded-md border-[2.5px] border-[#0B192C] bg-[#FAF8F2] group-hover:bg-[#FFB800] inline-flex items-center justify-center text-xs font-black">+</span>
-            <span>${extra.name}</span>
-          </button>
-          <span class="font-display text-sm">+${formatARS(extra.price)}</span>
-        </li>
+    function renderExtras() {
+      const container = document.getElementById('extrasContainer');
+      if (!container) return;
+      container.innerHTML = EXTRAS.map((ex) => `
+        <button type="button" onclick="addExtraToLastOrNew('${ex.id}')" class="retro-btn flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#FAF8F2] text-left">
+          <span class="font-bold text-xs sm:text-sm">+ ${ex.name}</span>
+          <span class="font-extrabold text-xs bg-[#FFB800] px-2 py-0.5 rounded-md border border-[#0B192C]">${formatARS(ex.price)}</span>
+        </button>
       `).join('');
-
-      const toppingsList = document.getElementById('toppingsReferenceList');
-      toppingsList.innerHTML = ALL_TOPPINGS.map((topping, idx) => {
-        const checked = idx < 4 ? 'checked' : '';
-        return `
-          <li class="flex items-center gap-2">
-            <input type="checkbox" ${checked} disabled class="retro-checkbox pointer-events-none opacity-95" />
-            <span>${topping}</span>
-          </li>
-        `;
-      }).join('');
     }
 
-    // Suma rápida desde el bloque inferior "Extras" si ya hay una burger en el carrito
-    function quickAddExtraToLastBurger(extraId) {
-      if (cart.length === 0) {
-        showToast('Primero elegí una burger de la carta 👆', '🍔');
-        document.getElementById('menuSection').scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-      const extraObj = PAID_EXTRAS.find(e => e.id === extraId);
-      if (!extraObj) return;
-
-      const lastItem = cart[cart.length - 1];
-      lastItem.extras.push({ ...extraObj });
-      renderCart();
-      showToast(`Sumado "${extraObj.name}" a ${lastItem.name} (${lastItem.size})`, '🧀');
+    function renderReferenceBlocks() {
+      const container = document.getElementById('referenceContainer');
+      if (!container) return;
+      container.innerHTML = `
+        <p>• Elegí <strong>Simple</strong>, <strong>Doble</strong> o <strong>Triple</strong> en cualquier burger para abrir el personalizador.</p>
+        <p>• Podés quitar ingredientes sin cargo, sumar extras y dejar notas como punto de cocción o aclaraciones del envío.</p>
+      `;
     }
 
-    // Abre el modal de personalización para una burger y tamaño específicos
-    function openCustomizeModal(burgerId, size) {
-      const burger = BURGERS_MENU.find(b => b.id === burgerId);
+    function calcModalUnitPrice() {
+      if (!activeModalState.burger) return 0;
+      const base = activeModalState.burger.prices[activeModalState.size] || 0;
+      const extrasSum = activeModalState.selectedExtras.reduce((acc, exId) => {
+        const found = EXTRAS.find((e) => e.id === exId);
+        return acc + (found ? found.price : 0);
+      }, 0);
+      return base + extrasSum;
+    }
+
+    function renderModalContent() {
+      const b = activeModalState.burger;
+      if (!b) return;
+      document.getElementById('modalTitle').textContent = `${b.name} (${activeModalState.size})`;
+      document.getElementById('modalQtyValue').textContent = activeModalState.qty;
+      document.getElementById('modalPricePreview').textContent = formatARS(calcModalUnitPrice() * activeModalState.qty);
+
+      document.getElementById('modalContent').innerHTML = `
+        <div>
+          <p class="font-extrabold text-xs uppercase mb-1.5">Tamaño</p>
+          <div class="flex gap-2">
+            ${Object.keys(b.prices).map((sz) => `
+              <button type="button" onclick="setModalSize('${sz}')" class="retro-btn px-3 py-1 rounded-lg text-xs font-extrabold ${activeModalState.size === sz ? 'bg-[#FFB800]' : 'bg-white'}">
+                ${sz} (${formatARS(b.prices[sz])})
+              </button>
+            `).join('')}
+          </div>
+        </div>
+        <div>
+          <p class="font-extrabold text-xs uppercase mb-1.5">Quitar ingredientes</p>
+          <div class="flex flex-wrap gap-2">
+            ${b.toppings.map((top) => {
+              const removed = activeModalState.removedToppings.includes(top);
+              return `
+                <button type="button" onclick="toggleRemovedTopping('${top}')" class="px-2.5 py-1 rounded-lg border-2 border-[#0B192C] text-xs font-bold ${removed ? 'bg-[#FFD6D6] line-through' : 'bg-white'}">
+                  ${top}
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        <div>
+          <p class="font-extrabold text-xs uppercase mb-1.5">Sumar extras</p>
+          <div class="space-y-1.5">
+            ${EXTRAS.map((ex) => {
+              const checked = activeModalState.selectedExtras.includes(ex.id);
+              return `
+                <label class="flex items-center justify-between px-3 py-1.5 rounded-lg border-2 border-[#0B192C] bg-[#FAF8F2] text-xs font-bold cursor-pointer">
+                  <span>
+                    <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleModalExtra('${ex.id}')" class="mr-2" />
+                    ${ex.name}
+                  </span>
+                  <span>+${formatARS(ex.price)}</span>
+                </label>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        <div>
+          <p class="font-extrabold text-xs uppercase mb-1">Nota para la cocina</p>
+          <input id="modalNoteInput" type="text" value="${activeModalState.notes.replace(/"/g, '&quot;')}" oninput="activeModalState.notes = this.value" placeholder="Ej: bien cocida, sin cebolla..." class="w-full px-3 py-2 rounded-xl border-2 border-[#0B192C] bg-white text-xs font-semibold" />
+        </div>
+      `;
+    }
+
+    function openCustomizeModal(burgerId, size = 'Doble') {
+      const burger = BURGERS.find((b) => b.id === burgerId);
       if (!burger) return;
-
       activeModalState = {
         burger,
         size,
-        selectedToppings: [...burger.defaultToppings],
+        qty: 1,
+        removedToppings: [],
         selectedExtras: [],
-        notes: '',
-        qty: 1
+        notes: ''
       };
-
-      document.getElementById('modalBurgerTitle').textContent = burger.name;
-      document.getElementById('modalItemNotes').value = '';
-      document.getElementById('modalQtyValue').textContent = '1';
-
       renderModalContent();
-
       const modal = document.getElementById('customModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -1105,215 +315,47 @@
       modal.classList.remove('flex');
     }
 
-    function renderModalContent() {
-      const { burger, size, selectedToppings, selectedExtras, qty } = activeModalState;
-
-      // 1. Selector de tamaño
-      const sizeContainer = document.getElementById('modalSizeSelector');
-      sizeContainer.innerHTML = ['Simple', 'Doble', 'Triple'].map(s => {
-        const isSelected = s === size;
-        return `
-          <button
-            type="button"
-            onclick="setModalSize('${s}')"
-            class="p-2.5 rounded-2xl border-[3px] border-[#0B192C] flex flex-col items-center transition-all ${
-              isSelected
-                ? 'bg-[#0B192C] text-[#FAF8F2] shadow-[3px_3px_0px_#FFB800]'
-                : 'bg-white text-[#0B192C] hover:bg-[#FFB800]/20'
-            }"
-          >
-            <span class="font-script text-lg leading-none">${s}</span>
-            <span class="font-display text-sm mt-1 ${isSelected ? 'text-[#FFB800]' : ''}">${formatARS(burger.prices[s])}</span>
-          </button>
-        `;
-      }).join('');
-
-      // 2. Ingredientes base (para destildar sin cargo)
-      const toppingsContainer = document.getElementById('modalBaseToppings');
-      if (burger.defaultToppings.length === 0) {
-        toppingsContainer.innerHTML = `<p class="text-xs font-semibold col-span-2">Medallón de carne + pan artesanal.</p>`;
-      } else {
-        toppingsContainer.innerHTML = burger.defaultToppings.map(topping => {
-          const isChecked = selectedToppings.includes(topping);
-          return `
-            <label class="flex items-center gap-2 p-2 rounded-xl border-2 ${isChecked ? 'border-[#0B192C] bg-[#FAF8F2]' : 'border-dashed border-[#0B192C]/35 bg-gray-50 opacity-70'} cursor-pointer select-none">
-              <input
-                type="checkbox"
-                ${isChecked ? 'checked' : ''}
-                onchange="toggleModalTopping('${topping}')"
-                class="retro-checkbox"
-              />
-              <span class="text-xs font-extrabold ${!isChecked ? 'line-through' : ''}">${topping}</span>
-            </label>
-          `;
-        }).join('');
-      }
-
-      // 3. Extras pagos
-      const extrasContainer = document.getElementById('modalPaidExtras');
-      extrasContainer.innerHTML = PAID_EXTRAS.map(extra => {
-        const isChecked = selectedExtras.some(e => e.id === extra.id);
-        return `
-          <label class="flex items-center justify-between p-2.5 rounded-xl border-2 ${isChecked ? 'border-[#0B192C] bg-[#FFB800]/20' : 'border-[#0B192C]/25 bg-[#FAF8F2]'} cursor-pointer select-none">
-            <div class="flex items-center gap-2.5">
-              <input
-                type="checkbox"
-                ${isChecked ? 'checked' : ''}
-                onchange="toggleModalExtra('${extra.id}')"
-                class="retro-checkbox"
-              />
-              <span class="text-xs sm:text-sm font-extrabold">${extra.name}</span>
-            </div>
-            <span class="font-display text-xs sm:text-sm">+${formatARS(extra.price)}</span>
-          </label>
-        `;
-      }).join('');
-
-      // Actualizar precio total en vivo del modal
-      const basePrice = burger.prices[size];
-      const extrasSum = selectedExtras.reduce((acc, e) => acc + e.price, 0);
-      const unitTotal = basePrice + extrasSum;
-      document.getElementById('modalLivePrice').textContent = formatARS(unitTotal * qty);
-    }
-
-    function setModalSize(newSize) {
-      activeModalState.size = newSize;
+    function setModalSize(size) {
+      activeModalState.size = size;
       renderModalContent();
     }
 
-    function toggleModalTopping(topping) {
-      const idx = activeModalState.selectedToppings.indexOf(topping);
-      if (idx > -1) {
-        activeModalState.selectedToppings.splice(idx, 1);
+    function toggleRemovedTopping(topping) {
+      if (activeModalState.removedToppings.includes(topping)) {
+        activeModalState.removedToppings = activeModalState.removedToppings.filter((t) => t !== topping);
       } else {
-        activeModalState.selectedToppings.push(topping);
+        activeModalState.removedToppings.push(topping);
       }
       renderModalContent();
     }
 
     function toggleModalExtra(extraId) {
-      const idx = activeModalState.selectedExtras.findIndex(e => e.id === extraId);
-      if (idx > -1) {
-        activeModalState.selectedExtras.splice(idx, 1);
+      if (activeModalState.selectedExtras.includes(extraId)) {
+        activeModalState.selectedExtras = activeModalState.selectedExtras.filter((id) => id !== extraId);
       } else {
-        const extraObj = PAID_EXTRAS.find(e => e.id === extraId);
-        if (extraObj) activeModalState.selectedExtras.push({ ...extraObj });
+        activeModalState.selectedExtras.push(extraId);
       }
-      renderModalContent();
+      document.getElementById('modalPricePreview').textContent = formatARS(calcModalUnitPrice() * activeModalState.qty);
     }
 
-    // Confirmar y agregar item al carrito
-    function confirmAddItem() {
-      const { burger, size, selectedToppings, selectedExtras, qty } = activeModalState;
-      const notes = document.getElementById('modalItemNotes').value.trim();
-
-      // Calcular qué ingredientes base fueron quitados
-      const removedToppings = burger.defaultToppings.filter(t => !selectedToppings.includes(t));
-      const basePrice = burger.prices[size];
-      const extrasPrice = selectedExtras.reduce((sum, e) => sum + e.price, 0);
-
-      cart.push({
-        uid: Date.now() + Math.random(),
-        burgerId: burger.id,
-        name: burger.name,
-        size,
-        unitPrice: basePrice + extrasPrice,
-        qty,
-        removedToppings,
-        extras: [...selectedExtras],
-        notes
-      });
-
-      closeCustomizeModal();
-      renderCart();
-      showToast(`¡Agregaste ${qty}x ${burger.name} (${size})!`, '🔥');
-    }
-
-    // Renderiza el carrito de pedidos
-    function renderCart() {
-      const container = document.getElementById('cartItemsContainer');
-      const totalsBox = document.getElementById('cartTotalsBox');
-      const clearBtn = document.getElementById('clearCartBtn');
-      const badge = document.getElementById('cartCountBadge');
-      const stickyBar = document.getElementById('mobileStickyBar');
-
-      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-      const totalAmount = cart.reduce((sum, item) => sum + item.unitPrice * item.qty, 0);
-
-      badge.textContent = totalQty;
-      document.getElementById('stickyCount').textContent = totalQty;
-      document.getElementById('stickyTotal').textContent = formatARS(totalAmount);
-
-      if (cart.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-6 px-3 bg-[#FAF8F2] rounded-2xl border-2 border-dashed border-[#0B192C]/30">
-            <p class="font-extrabold text-sm sm:text-base text-[#0B192C]">Todavía no agregaste ninguna burger</p>
-            <p class="text-xs font-semibold text-[#0B192C]/70 mt-1">
-              Elegí Simple, Doble o Triple arriba para armar tu combo con papas fritas 🍟
-            </p>
-          </div>
-        `;
-        totalsBox.classList.add('hidden');
-        clearBtn.classList.add('hidden');
-        stickyBar.classList.add('translate-y-full');
-        return;
-      }
-
-      totalsBox.classList.remove('hidden');
-      clearBtn.classList.remove('hidden');
-      stickyBar.classList.remove('translate-y-full');
-      document.getElementById('cartTotalAmount').textContent = formatARS(totalAmount);
-
-      container.innerHTML = cart.map((item, index) => {
-        const extrasText = item.extras.length > 0
-          ? `<div class="text-xs font-bold text-emerald-800 mt-1">+ Extras: ${item.extras.map(e => e.name).join(', ')}</div>`
-          : '';
-        const removedText = item.removedToppings.length > 0
-          ? `<div class="text-xs font-bold text-red-700 mt-0.5">✕ Sin: ${item.removedToppings.join(', ')}</div>`
-          : '';
-        const notesText = item.notes
-          ? `<div class="text-xs italic font-semibold text-[#0B192C]/75 mt-0.5">📝 "${item.notes}"</div>`
-          : '';
-
-        return `
-          <div class="p-3 rounded-2xl bg-[#FAF8F2] border-[2.5px] border-[#0B192C] flex items-start justify-between gap-3">
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center flex-wrap gap-1.5">
-                <span class="font-script text-xl text-[#0B192C] leading-none">${item.name}</span>
-                <span class="bg-[#0B192C] text-[#FAF8F2] text-[11px] font-black uppercase px-2 py-0.5 rounded-full">
-                  ${item.size}
-                </span>
-                <span class="text-[11px] font-bold text-[#0B192C]/70">(c/ papas)</span>
-              </div>
-              ${extrasText}
-              ${removedText}
-              ${notesText}
-              <div class="font-display text-sm sm:text-base mt-1.5 text-[#0B192C]">
-                ${formatARS(item.unitPrice * item.qty)}
-              </div>
-            </div>
-
-            <!-- Controles cantidad / eliminar -->
-            <div class="flex flex-col items-end gap-1.5">
-              <div class="flex items-center bg-white border-2 border-[#0B192C] rounded-full px-1 py-0.5">
-                <button type="button" onclick="updateCartQty(${index}, -1)" class="w-6 h-6 font-black text-sm hover:bg-[#FFB800] rounded-full">−</button>
-                <span class="w-6 text-center font-black text-xs">${item.qty}</span>
-                <button type="button" onclick="updateCartQty(${index}, 1)" class="w-6 h-6 font-black text-sm hover:bg-[#FFB800] rounded-full">+</button>
-              </div>
-              <button type="button" onclick="removeCartItem(${index})" class="text-[11px] font-extrabold text-red-600 hover:underline">
-                Quitar
-              </button>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function updateCartQty(index, delta) {
-      if (!cart[index]) return;
-      cart[index].qty += delta;
-      if (cart[index].qty <= 0) {
-        cart.splice(index, 1);
+    function addExtraToLastOrNew(extraId) {
+      const ex = EXTRAS.find((e) => e.id === extraId);
+      if (!ex) return;
+      if (cart.length > 0) {
+        const last = cart[cart.length - 1];
+        last.extras = last.extras || [];
+        last.extras.push(ex.name);
+        last.unitPrice += ex.price;
+      } else {
+        cart.push({
+          title: ex.name,
+          size: 'Extra',
+          qty: 1,
+          unitPrice: ex.price,
+          extras: [],
+          removedToppings: [],
+          notes: ''
+        });
       }
       renderCart();
     }
@@ -1323,135 +365,82 @@
       renderCart();
     }
 
-    // Cambio de modalidad Delivery / Retiro por el local
-    function setDeliveryMode(mode) {
-      deliveryMode = mode;
-      const btnDelivery = document.getElementById('btnDelivery');
-      const btnPickup = document.getElementById('btnPickup');
-      const addressFields = document.getElementById('deliveryAddressFields');
-      const pickupBox = document.getElementById('pickupInfoBox');
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const totalEl = document.getElementById('cartTotal');
+      if (!container || !totalEl) return;
 
-      const checkSvg = `
-        <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-        </svg>
-      `;
-
-      if (mode === 'delivery') {
-        btnDelivery.className = 'delivery-toggle active flex items-center justify-between px-5 py-3.5 rounded-full border-[3.5px] border-[#0B192C] bg-[#0B192C] text-[#FAF8F2] shadow-[4px_4px_0px_#0B192C] transition-all';
-        btnDelivery.querySelector('.mode-radio').className = 'mode-radio w-7 h-7 rounded-full border-[3px] border-current flex items-center justify-center bg-[#FAF8F2] text-[#0B192C]';
-        btnDelivery.querySelector('.mode-radio').innerHTML = checkSvg;
-
-        btnPickup.className = 'delivery-toggle flex items-center justify-between px-5 py-3.5 rounded-full border-[3.5px] border-[#0B192C] bg-white text-[#0B192C] shadow-[4px_4px_0px_#0B192C] transition-all';
-        btnPickup.querySelector('.mode-radio').className = 'mode-radio w-7 h-7 rounded-full border-[3px] border-current flex items-center justify-center';
-        btnPickup.querySelector('.mode-radio').innerHTML = '';
-
-        addressFields.classList.remove('hidden');
-        pickupBox.classList.add('hidden');
-      } else {
-        btnPickup.className = 'delivery-toggle active flex items-center justify-between px-5 py-3.5 rounded-full border-[3.5px] border-[#0B192C] bg-[#0B192C] text-[#FAF8F2] shadow-[4px_4px_0px_#0B192C] transition-all';
-        btnPickup.querySelector('.mode-radio').className = 'mode-radio w-7 h-7 rounded-full border-[3px] border-current flex items-center justify-center bg-[#FAF8F2] text-[#0B192C]';
-        btnPickup.querySelector('.mode-radio').innerHTML = checkSvg;
-
-        btnDelivery.className = 'delivery-toggle flex items-center justify-between px-5 py-3.5 rounded-full border-[3.5px] border-[#0B192C] bg-white text-[#0B192C] shadow-[4px_4px_0px_#0B192C] transition-all';
-        btnDelivery.querySelector('.mode-radio').className = 'mode-radio w-7 h-7 rounded-full border-[3px] border-current flex items-center justify-center';
-        btnDelivery.querySelector('.mode-radio').innerHTML = '';
-
-        addressFields.classList.add('hidden');
-        pickupBox.classList.remove('hidden');
-      }
-    }
-
-    // Genera y abre el enlace de WhatsApp con todo el pedido formateado
-    function sendOrderToWhatsApp() {
       if (cart.length === 0) {
-        showToast('Agregá al menos una burger antes de pedir 🍔', '⚠️');
-        document.getElementById('menuSection').scrollIntoView({ behavior: 'smooth' });
+        container.innerHTML = `<p class="text-xs text-[#0B192C]/70 font-semibold">Todavía no agregaste hamburguesas al pedido.</p>`;
+        totalEl.textContent = formatARS(0);
         return;
       }
-
-      const nameInput = document.getElementById('customerName');
-      const addressInput = document.getElementById('customerAddress');
-      const refInput = document.getElementById('addressRef');
-      const paymentSelect = document.getElementById('paymentMethod');
-
-      const customerName = nameInput.value.trim();
-      const customerAddress = addressInput.value.trim();
-      const addressRef = refInput.value.trim();
-      const paymentMethod = paymentSelect.value;
-
-      if (!customerName) {
-        showToast('Por favor ingresá tu nombre para el pedido', '✍️');
-        nameInput.focus();
-        return;
-      }
-
-      if (deliveryMode === 'delivery' && !customerAddress) {
-        showToast('Ingresá la dirección de entrega en Berazategui', '🛵');
-        addressInput.focus();
-        return;
-      }
-
-      // Construcción del mensaje estructurado
-      let lines = [];
-      lines.push(`🍔 *NUEVO PEDIDO - DON GODOY* 🍔`);
-      lines.push(`_Morfate una BURGER_`);
-      lines.push(`--------------------------------`);
-      lines.push(`👤 *Cliente:* ${customerName}`);
-
-      if (deliveryMode === 'delivery') {
-        lines.push(`🛵 *Modalidad:* Delivery`);
-        lines.push(`📍 *Dirección:* ${customerAddress}`);
-        if (addressRef) {
-          lines.push(`🏠 *Ref:* ${addressRef}`);
-        }
-      } else {
-        lines.push(`🏪 *Modalidad:* Retiro por el local`);
-      }
-
-      lines.push(`💳 *Pago:* ${paymentMethod}`);
-      lines.push(`--------------------------------`);
-      lines.push(`📋 *DETALLE DEL PEDIDO:*`);
 
       let grandTotal = 0;
+      container.innerHTML = cart.map((item, idx) => {
+        const subtotal = item.unitPrice * item.qty;
+        grandTotal += subtotal;
+        return `
+          <div class="p-3 rounded-xl border-2 border-[#0B192C] bg-[#FAF8F2] flex items-start justify-between gap-2">
+            <div>
+              <div class="font-extrabold">${item.qty}x ${item.title} (${item.size}) — ${formatARS(subtotal)}</div>
+              ${item.extras && item.extras.length ? `<div class="text-xs font-semibold text-[#0B192C]/80">+ Extras: ${item.extras.join(', ')}</div>` : ''}
+              ${item.removedToppings && item.removedToppings.length ? `<div class="text-xs font-semibold text-[#A61C1C]">Sin: ${item.removedToppings.join(', ')}</div>` : ''}
+              ${item.notes ? `<div class="text-xs font-semibold text-[#0B192C]/80">Nota: ${item.notes}</div>` : ''}
+            </div>
+            <button type="button" onclick="removeCartItem(${idx})" class="px-2 py-1 rounded-lg border border-[#0B192C] bg-white text-xs font-bold">✕</button>
+          </div>
+        `;
+      }).join('');
 
+      totalEl.textContent = formatARS(grandTotal);
+    }
+
+    function sendOrderToWhatsApp() {
+      if (cart.length === 0) {
+        alert('Agregá al menos una burger antes de enviar el pedido.');
+        return;
+      }
+
+      const name = document.getElementById('customerName').value.trim();
+      const address = document.getElementById('customerAddress').value.trim();
+      const notes = document.getElementById('customerNotes').value.trim();
+
+      const lines = [
+        `*NUEVO PEDIDO — DON GODOY* 🍔`,
+        `Modalidad: *${orderMode}*`
+      ];
+      if (name) lines.push(`Cliente: *${name}*`);
+      if (address) lines.push(`Dirección: *${address}*`);
+      lines.push('');
+
+      let grandTotal = 0;
       cart.forEach((item, idx) => {
         const lineSubtotal = item.unitPrice * item.qty;
         grandTotal += lineSubtotal;
-
-        lines.push(`\n*${idx + 1}. ${item.qty}x ${item.name} (${item.size})* — ${formatARS(lineSubtotal)}`);
-        lines.push(`   🍟 _Incluye papas fritas_`);
-
-        if (item.extras.length > 0) {
-          lines.push(`   ➕ *Extras:* ${item.extras.map(e => e.name).join(', ')}`);
-        }
-        if (item.removedToppings.length > 0) {
-          lines.push(`   ❌ *Sin:* ${item.removedToppings.join(', ')}`);
-        }
-        if (item.notes) {
-          lines.push(`   📝 *Nota:* ${item.notes}`);
-        }
+        lines.push(`${idx + 1}. *${item.qty}x ${item.title}* (${item.size}) — ${formatARS(lineSubtotal)}`);
+        if (item.extras && item.extras.length) lines.push(`   + Extras: ${item.extras.join(', ')}`);
+        if (item.removedToppings && item.removedToppings.length) lines.push(`   Sin: ${item.removedToppings.join(', ')}`);
+        if (item.notes) lines.push(`   Nota: ${item.notes}`);
       });
 
-      lines.push(`\n--------------------------------`);
-      lines.push(`💰 *TOTAL: ${formatARS(grandTotal)}*`);
-      lines.push(`--------------------------------`);
-      lines.push(`¡Gracias Don Godoy! 🙌`);
+      lines.push('');
+      lines.push(`*TOTAL: ${formatARS(grandTotal)}*`);
+      if (notes) lines.push(`Aclaración: ${notes}`);
+      lines.push('¡Gracias Don Godoy! 🙌');
 
-      const cleanPhone = '5491161428513';
+      const cleanPhone = FIXED_WHATSAPP;
       const encodedText = encodeURIComponent(lines.join('\n'));
       const waUrl = `https://wa.me/${cleanPhone}?text=${encodedText}`;
-
       window.open(waUrl, '_blank', 'noopener,noreferrer');
     }
 
-    // Inicialización de eventos al cargar la ventana
     window.addEventListener('DOMContentLoaded', () => {
       renderMenu();
+      renderExtras();
       renderReferenceBlocks();
       renderCart();
 
-      // Eventos Modal Personalización
       document.getElementById('closeModalBtn').addEventListener('click', closeCustomizeModal);
       document.getElementById('customModal').addEventListener('click', (e) => {
         if (e.target.id === 'customModal') closeCustomizeModal();
@@ -1461,58 +450,58 @@
         if (activeModalState.qty > 1) {
           activeModalState.qty--;
           document.getElementById('modalQtyValue').textContent = activeModalState.qty;
-          renderModalContent();
+          document.getElementById('modalPricePreview').textContent = formatARS(calcModalUnitPrice() * activeModalState.qty);
         }
       });
 
       document.getElementById('modalQtyPlus').addEventListener('click', () => {
         activeModalState.qty++;
         document.getElementById('modalQtyValue').textContent = activeModalState.qty;
-        renderModalContent();
+        document.getElementById('modalPricePreview').textContent = formatARS(calcModalUnitPrice() * activeModalState.qty);
       });
 
-      document.getElementById('confirmAddToCartBtn').addEventListener('click', confirmAddItem);
+      document.getElementById('confirmAddToCartBtn').addEventListener('click', () => {
+        const b = activeModalState.burger;
+        if (!b) return;
+        const extraNames = activeModalState.selectedExtras.map((id) => {
+          const found = EXTRAS.find((e) => e.id === id);
+          return found ? found.name : '';
+        }).filter(Boolean);
 
-      // Eventos Modal Configuración WhatsApp
-      const settingsModal = document.getElementById('settingsModal');
-      document.getElementById('openSettingsBtn').addEventListener('click', () => {
-        document.getElementById('whatsappPhoneInput').value = storeWhatsApp;
-        settingsModal.classList.remove('hidden');
-        settingsModal.classList.add('flex');
+        cart.push({
+          title: b.name,
+          size: activeModalState.size,
+          qty: activeModalState.qty,
+          unitPrice: calcModalUnitPrice(),
+          extras: extraNames,
+          removedToppings: [...activeModalState.removedToppings],
+          notes: activeModalState.notes.trim()
+        });
+
+        closeCustomizeModal();
+        renderCart();
       });
 
-      document.getElementById('closeSettingsBtn').addEventListener('click', () => {
-        settingsModal.classList.add('hidden');
-        settingsModal.classList.remove('flex');
+      document.getElementById('btnDelivery').addEventListener('click', () => {
+        orderMode = 'Delivery';
+        document.getElementById('btnDelivery').className = 'retro-btn px-3 py-1 rounded-lg text-xs font-extrabold bg-[#FFB800]';
+        document.getElementById('btnPickup').className = 'retro-btn px-3 py-1 rounded-lg text-xs font-extrabold bg-white';
       });
 
-      document.getElementById('saveSettingsBtn').addEventListener('click', () => {
-        const val = document.getElementById('whatsappPhoneInput').value.replace(/\D/g, '');
-        if (val.length < 8) {
-          showToast('Ingresá un número válido con código de área', '⚠️');
-          return;
-        }
-        storeWhatsApp = val;
-        localStorage.setItem('donGodoy_wsp', storeWhatsApp);
-        settingsModal.classList.add('hidden');
-        settingsModal.classList.remove('flex');
-        showToast('Número de WhatsApp guardado ✅', '📱');
+      document.getElementById('btnPickup').addEventListener('click', () => {
+        orderMode = 'Retiro';
+        document.getElementById('btnPickup').className = 'retro-btn px-3 py-1 rounded-lg text-xs font-extrabold bg-[#FFB800]';
+        document.getElementById('btnDelivery').className = 'retro-btn px-3 py-1 rounded-lg text-xs font-extrabold bg-white';
       });
 
-      // Eventos Delivery / Retiro
-      document.getElementById('btnDelivery').addEventListener('click', () => setDeliveryMode('delivery'));
-      document.getElementById('btnPickup').addEventListener('click', () => setDeliveryMode('pickup'));
-
-      // Vaciar carrito
       document.getElementById('clearCartBtn').addEventListener('click', () => {
         cart = [];
         renderCart();
-        showToast('Pedido vaciado', '🗑️');
       });
 
-      // Enviar por WhatsApp
       document.getElementById('sendWhatsAppBtn').addEventListener('click', sendOrderToWhatsApp);
     });
   </script>
 </body>
 </html>
+
